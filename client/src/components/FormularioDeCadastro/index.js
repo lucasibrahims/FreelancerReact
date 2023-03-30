@@ -2,7 +2,7 @@ import '../FormularioDeJob/FormularioDeCadastro.css'
 import CampoTexto from '../CampoTexto'
 import Botao from '../Botão'
 import { useState } from 'react'
-import { addFreelancer } from '/home/lucas-ibrahim/Área de Trabalho/2ndMarket/ReactDappModel/client/src/functions/AddFreelancer.js'
+import { addFreelancer } from '../../functions/AddFreelancer'
 
 
 const FormularioDeCadastro = (props) => {
