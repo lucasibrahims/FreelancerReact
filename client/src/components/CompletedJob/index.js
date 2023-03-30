@@ -21,7 +21,7 @@ setFreela(res));
             <label>Freelancer</label>
             <p>{freela.name}</p>
             <button variant="primary" onClick={aoClicar}>
-                Approve {props.id}
+                Approve
             </button>
         </div>
     )

@@ -16,7 +16,7 @@ const AvailableJob = (props) => {
             <label>Budget</label>
             <p>{props.budget}</p>
             <button variant="primary" onClick={aoClicar}>
-                Accept {props.id}
+                Accept
             </button>
         </div>
     )

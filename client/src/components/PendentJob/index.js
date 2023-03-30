@@ -14,7 +14,7 @@ const PendentJob = (props) => {
             <label>Client</label>
             <p>{props.client}</p>
             <button variant="primary" onClick={aoClicar}>
-                Completed {props.id}
+                Completed
             </button>
         </div>
     )
