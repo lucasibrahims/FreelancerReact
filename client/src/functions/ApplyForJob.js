@@ -8,6 +8,7 @@ const instance = new web3.eth.Contract(freelancePlatformABI, freelancePlatformAd
 export async function applyForJob(_id){
     if (window.ethereum) {
         try {
+            console.log(_id)
             let accounts = await window.ethereum.request({ method: "eth_requestAccounts" })
             let call = await instance.methods.applyForJob(_id).send({ from: accounts[0] })
             return call;

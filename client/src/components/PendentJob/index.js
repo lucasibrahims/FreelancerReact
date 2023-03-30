@@ -1,25 +1,23 @@
-import "./AvailableJob.css"
-import { applyForJob } from "../../functions/ApplyForJob"
+import "./PendentJob.css"
+import { completeJob } from "../../functions/CompleteJob"
 
-const AvailableJob = (props) => {
+const PendentJob = (props) => {
     const aoClicar = (evento) => {
         evento.preventDefault()
-        applyForJob(props.id + 1);     
+        completeJob(props.id + 1);     
     }
     return(
-        <div className="job">
+        <div className="pendent-job">
             <h2>{props.title}</h2>
             <label>Description</label>
             <p>{props.description}</p>
             <label>Client</label>
             <p>{props.client}</p>
-            <label>Budget</label>
-            <p>{props.budget}</p>
             <button variant="primary" onClick={aoClicar}>
-                Accept {props.id}
+                Completed {props.id}
             </button>
         </div>
     )
 }
 
-export default AvailableJob
+export default PendentJob

@@ -1,3 +1,4 @@
+import Rating from "../Rating"
 import "./AvailableFreelancer.css"
 
 const AvailableFreelancer= (props) => {
@@ -13,6 +14,7 @@ const AvailableFreelancer= (props) => {
             <p>{props.portfolio}</p>
             <label>Rating</label>
             <p>{props.rating}</p>
+            <Rating address={props.address}/>
 
         </div>
     )

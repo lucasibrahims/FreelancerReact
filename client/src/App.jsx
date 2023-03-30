@@ -6,6 +6,8 @@ import { getJobs } from "./functions/GetJobs.js"
 import { useState } from "react";
 import { getAllFreelancer } from "./functions/GetAllFreelancer";
 import AvailableFreelancer from "./components/AvailableFreelancer";
+import PendentJob from "./components/PendentJob";
+import CompletedJob from "./components/CompletedJob";
 
 
 
@@ -22,6 +24,10 @@ function App() {
       setFreelancers(res)
     })
 
+let availableJobs = jobs.filter((job) => job.freelancer === "0x0000000000000000000000000000000000000000" && !job.jobApproved)
+let pendentJobs = jobs.filter((job) => job.freelancer !== "0x0000000000000000000000000000000000000000" && !job.jobCompleted)
+let completedJobs = jobs.filter((job) => job.jobCompleted && !job.jobApproved)
+
   return (
     <div className="App">
       <Header />
@@ -32,7 +38,7 @@ function App() {
       <div className="jobs">
         <h1>Available Jobs</h1>
         <div className="available">
-          {jobs.map((job) => (
+          {availableJobs.map((job) => (
             <AvailableJob
               title={job.jobTitle}
               client={job.client}
@@ -42,10 +48,31 @@ function App() {
             />
           ))}
         </div>
+        <h1>Pendent Jobs</h1>
+        <div className="available">
+          {pendentJobs.map((job) => 
+          <PendentJob 
+          title={job.jobTitle}
+          client={job.client}
+          description={job.jobDescription}
+          id={jobs.indexOf(job)}/>)}
+
+        </div>
+        <h1>Completed Jobs</h1>
+        <div className="available">
+          {completedJobs.map((job) => 
+          <CompletedJob 
+          title={job.jobTitle}
+          client={job.client}
+          description={job.jobDescription}
+          freela={job.freelancer}
+          id={jobs.indexOf(job)}/>)}
+
+        </div>
       </div>
       <div className="freelancers">
         <h1>Available Freelancers</h1>
-        <div className="available">
+        <div className="available-freela">
         {freelancers.map((freela) =>
         (
           <AvailableFreelancer
@@ -54,10 +81,11 @@ function App() {
           portfolio={freela.portfolio}
           experience={freela.experience}
           rating={freela.rating}
+          address={freela.freelancerAddress}
           />
         ))}
-
       </div>
+
       </div>
     </div>
   );
@@ -65,54 +93,3 @@ function App() {
 
 export default App;
 
-
-
-// import { useState, useEffect } from "react";
-// import Header from "./Header";
-// import FormularioDeCadastro from "./FormularioDeCadastro";
-// import FormularioDeJob from "./FormularioDeJob";
-// import AvailableJob from "./AvailableJob";
-
-// function App() {
-//   const [jobs, setJobs] = useState([]);
-
-//   // retrieve the list of available jobs
-//   useEffect(() => {
-//     const fetchJobs = async () => {
-//       const response = await fetch("/api/jobs");
-//       const data = await response.json();
-//       setJobs(data);
-//     };
-//     fetchJobs();
-//   }, []);
-
-//   // filter the available jobs that have no assigned freelancer
-
-
-//   return (
-//     <div className="App">
-//       <Header />
-//       <div className="forms">
-//         <FormularioDeCadastro />
-//         <FormularioDeJob />
-//       </div>
-//       <div className="jobs">
-//         <h1>Available Jobs</h1>
-//         <div className="available">
-//           {/* map over the available jobs and create an AvailableJob component for each one */}
-//           {availableJobs.map((job) => (
-//             <AvailableJob
-//               key={job.id}
-//               title={job.title}
-//               client={job.client}
-//               description={job.description}
-//               budget={job.budget}
-//             />
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;

@@ -1,0 +1,14 @@
+.rating {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .rating span {
+    color: #ccc;
+    margin-right: 5px;
+  }
+  
+  .rating span.active {
+    color: #ffcd33;
+  }
+  
