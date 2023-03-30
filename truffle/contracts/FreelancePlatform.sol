@@ -20,6 +20,7 @@ contract FreelancePlatform {
     
     struct Freelancer {
         uint freelancerId;
+        address freelancerAddress;
         string name;
         string skills;
         string experience;
@@ -68,8 +69,8 @@ contract FreelancePlatform {
     function addFreelancer(string memory _name, string memory _skills, string memory _experience, string memory _portfolio) public {
         require(freelancers[msg.sender].freelancerId == 0, "Freelancer already added");
         freelancerCounter++;
-        freelancers[msg.sender] = Freelancer(freelancerCounter, _name, _skills, _experience, _portfolio, 0, 0);
-        freela.push(Freelancer(freelancerCounter, _name, _skills, _experience, _portfolio, 0, 0));
+        freelancers[msg.sender] = Freelancer(freelancerCounter, msg.sender, _name, _skills, _experience, _portfolio, 0, 0);
+        freela.push(Freelancer(freelancerCounter, msg.sender, _name, _skills, _experience, _portfolio, 0, 0));
     }
     
     function rateFreelancer(address _freelancer, uint _rating) public {
