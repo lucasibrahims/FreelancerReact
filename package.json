@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "webpack-dev-server": "^2.9.7"
   }
 }

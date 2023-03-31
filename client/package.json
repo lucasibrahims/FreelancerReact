@@ -2,9 +2,12 @@
   "name": "truffle-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lucasibrahims.github.io/FreelancerReact/",
   "scripts": {
     "build": "webpack",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "react": "^18.2.0",
